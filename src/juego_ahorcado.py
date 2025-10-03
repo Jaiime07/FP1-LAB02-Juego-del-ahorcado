@@ -31,7 +31,9 @@ def normalizar(cadena):
             res += "o"
         elif c in "úü":
             res += "u"
-        return res
+        else:
+            res+=c
+    return res
             
     """
     Normaliza una cadena de texto realizando las siguientes operaciones:
