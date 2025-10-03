@@ -94,7 +94,7 @@ def mostrar_estado(palabra_enmascarada, letras_usadas, intentos_restantes):
 def pedir_letra(letras_usadas):
     letra = input("Introduce una letra:")
     while True:
-        if len(letra) == 1:
+        if len(letra) != 1:
             print("Introduzca una única letra")
             letra = input("Introduce una letra:")
         elif letra in letras_usadas:
@@ -102,8 +102,20 @@ def pedir_letra(letras_usadas):
             letra = input("Introduce una letra:")
         else:
             break
-
+s
 
 # TODO: Implementa la función jugar
+def jugar(palabra_secreta, intentos_restantes):
+    palabra_secreta = normalizar(palabra_secreta)
+    if palabra_secreta == "":
+        print("None")
+    palabra_enmascarada = ocultar(palabra_secreta)
+    intentos_restantes = 6
+    letras_usadas = ""
+    while intentos_restantes > 0 and "_" in palabra_enmascarada:
+        mostrar_estado(palabra_enmascarada, letras_usadas, intentos_restantes)
+        pedir_letra(letras_usadas)
+        
+        
 
 # TODO: Escribe el programa principal
