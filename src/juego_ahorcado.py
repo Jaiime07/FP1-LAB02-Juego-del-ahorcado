@@ -18,6 +18,21 @@ def elige_palabra(fichero="palabras.txt"):
 
 
 def normalizar(cadena):
+    cadena = cadena.lower().strip()
+    res = ""
+    for c in cadena:
+        if c in "áä":
+            res += "a"
+        elif c in "éë":
+            res += "e"
+        elif c in "íï":
+            res += "i"
+        elif c in "óö":
+            res += "o"
+        elif c in "úü":
+            res += "u"
+        return res
+            
     """
     Normaliza una cadena de texto realizando las siguientes operaciones:
         - convierte a minúsculas
@@ -30,8 +45,6 @@ def normalizar(cadena):
     Devuelve:
       Cadena de texto con la palabra normalizada
     """
-    # TODO: Implementa esta función (y elimina la instrucción pass)
-    pass
 
 def ocultar(palabra_secreta, letras_usadas=""):
     '''Devuelve una cadena de texto con la palabra enmascarada. 
