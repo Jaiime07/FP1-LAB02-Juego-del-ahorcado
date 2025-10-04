@@ -85,8 +85,10 @@ def ha_ganado(palabra_enmascarada):
 
 
 
-def mostrar_estado(palabra_enmascarada, letras_usadas, intentos_restantes):
+def mostrar_estado(palabra_enmascarada, letras_usadas, intentos_restantes = 6):
     print(f"Estado: {"".join(palabra_enmascarada)}")
+    if letras_usadas == "":
+        print(f"Letras usadas: Ninguna")
     print(f"Letras usadas: {letras_usadas}")
     print(f"Intentos restantes:{intentos_restantes}")
 
@@ -101,20 +103,33 @@ def pedir_letra(letras_usadas):
             print("Esa letra ya la has usado anteriormente")
             letra = input("Introduce una letra:")
         else:
-            break
-s
+            return letra.lower() 
+        #este return devuelve una variable para atraparla luego en jugar() 
 
-# TODO: Implementa la función jugar
+
 def jugar(palabra_secreta, intentos_restantes):
     palabra_secreta = normalizar(palabra_secreta)
     if palabra_secreta == "":
-        print("None")
+        return None
     palabra_enmascarada = ocultar(palabra_secreta)
-    intentos_restantes = 6
     letras_usadas = ""
     while intentos_restantes > 0 and "_" in palabra_enmascarada:
         mostrar_estado(palabra_enmascarada, letras_usadas, intentos_restantes)
         pedir_letra(letras_usadas)
+        letra = pedir_letra(letras_usadas) #atrapamos el return anterior ^
+        letras_usadas += letra
+        if letra not in palabra_secreta:
+            print(f"Has fallado")
+            intentos_restantes -= 1
+        elif letra in palabra_secreta:
+            print(f"La letra está en la palabra secreta")
+            ocultar() #########TERMINAR
+    if intentos_restantes == 0 and "_" in palabra_enmascarada:
+        print(f"Te has quedado sin intentos! Has perdido")
+    if intentos_restantes >= 0 and "_" not in palabra_enmascarada:
+        print("Has acertado la palabra!")
+
+        
         
         
 
