@@ -129,6 +129,7 @@ def jugar(palabra_secreta, intentos_restantes):
         print("Has ganado!")
     elif victoria == False:
         print(f"Has perdido!")
+        print(f'La palabra secreta era {palabra_secreta}')
 
         
         
